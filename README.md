@@ -7,7 +7,7 @@ Inspired by `coloredlogs` but without the subprocesses.
 ```python
 from quick_colorlog import init_colors
 
-init_colors
+init_colors()
 ```
 
 ### Defaults
