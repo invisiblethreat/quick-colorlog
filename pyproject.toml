@@ -1,6 +1,6 @@
 [project]
 name = "quick-colorlog"
-version = "0.0.2"
+version = "0.0.6"
 description = "Colorized logging with Python."
 readme = "README.md"
 requires-python = ">=3.7"
@@ -38,6 +38,3 @@ repository = "https://github.com/invisiblethreat/quick-colorlog"
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
-
-[tool.setuptools.packages.find]
-where = ["quick-colorlog"]
