@@ -9,7 +9,7 @@ init(autoreset=True)
 class ColorizedFormatter(logging.Formatter):
     """
     Custom formatter for colorizing log messages based on their level.
-    """ 
+    """
     LEVEL_COLORS = {
         logging.DEBUG: Fore.CYAN,
         logging.INFO: Fore.GREEN,
@@ -32,7 +32,7 @@ class ColorizedFormatter(logging.Formatter):
 
         return  message
 
-def init_colors(level:int=logging.INFO,output: TextIO = sys.stderr):
+def init_colors(level:int=logging.INFO, output: TextIO = sys.stderr):
     """
     Initialize the logger with colorized output.
 
@@ -40,7 +40,6 @@ def init_colors(level:int=logging.INFO,output: TextIO = sys.stderr):
         level (int): The logging level (default is logging.INFO).
         output (TextIO): The output stream (default is sys.stderr).
     """
-    
     logger = logging.getLogger()
     logger.setLevel(level)
 

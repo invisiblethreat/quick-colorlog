@@ -1,6 +1,6 @@
 [project]
 name = "quick-colorlog"
-version = "0.0.6"
+version = "0.0.7"
 description = "Colorized logging with Python."
 readme = "README.md"
 requires-python = ">=3.7"
