@@ -1,15 +1,18 @@
 import logging
 import sys
 from typing import TextIO
-from colorama import init, Fore, Back
+
+from colorama import Back, Fore, init
 
 # Initialize colorama for Windows compatibility
 init(autoreset=True)
+
 
 class ColorizedFormatter(logging.Formatter):
     """
     Custom formatter for colorizing log messages based on their level.
     """
+
     LEVEL_COLORS = {
         logging.DEBUG: Fore.CYAN,
         logging.INFO: Fore.GREEN,
@@ -18,7 +21,9 @@ class ColorizedFormatter(logging.Formatter):
         logging.CRITICAL: Fore.WHITE + Back.RED,
     }
 
-    log_format = "%(asctime)s %(name)s[%(process)d] %(levelname)s %(message)s"
+    log_format = (
+        "%(asctime)s %(name)s[%(process)d] %(levelname)s" + Fore.RESET + " %(message)s"
+    )
     date_format = "%Y-%m-%d %H:%M:%S"
 
     def __init__(self):
@@ -28,11 +33,12 @@ class ColorizedFormatter(logging.Formatter):
         message = super().format(record)
         # Apply color based on the log level and if there is an attached TTY
         if sys.stdout.isatty():
-            message = self.LEVEL_COLORS.get(record.levelno, Fore.WHITE) + message
+            message = self.LEVEL_COLORS.get(record.levelno, Fore.RESET) + message
 
-        return  message
+        return message
 
-def init_colors(level:int=logging.INFO, output: TextIO = sys.stderr):
+
+def init_colors(level: int = logging.INFO, output: TextIO = sys.stderr):
     """
     Initialize the logger with colorized output.
 
@@ -54,13 +60,14 @@ def init_colors(level:int=logging.INFO, output: TextIO = sys.stderr):
     # Add handler to the logger
     logger.addHandler(console_handler)
 
+
 if __name__ == "__main__":
     # Configure the logger
-    init_colors()
+    init_colors(level=logging.DEBUG)
 
     # Example log messages
     logger = logging.getLogger("test.logger")
-    logger.debug("send_request_body.complete")
+    logger.debug("This is a debug message")
     logger.info("This is an info message.")
     logger.warning("This is a warning message.")
     logger.error("This is an error message.")
