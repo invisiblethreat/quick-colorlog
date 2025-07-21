@@ -29,7 +29,7 @@ class ColorizedFormatter(logging.Formatter):
     def __init__(self):
         super().__init__(fmt=self.log_format, datefmt=self.date_format)
 
-    def format(self, record):
+    def format(self, record) -> str:
         message = super().format(record)
         # Apply color based on the log level and if there is an attached TTY
         if sys.stdout.isatty():
@@ -38,7 +38,7 @@ class ColorizedFormatter(logging.Formatter):
         return message
 
 
-def init_colors(level: int = logging.INFO, output: TextIO = sys.stderr):
+def init_colors(level: int = logging.INFO, output: TextIO = sys.stderr) -> None:
     """
     Initialize the logger with colorized output.
 
