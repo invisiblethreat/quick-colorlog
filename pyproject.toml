@@ -1,6 +1,6 @@
 [project]
 name = "quick-colorlog"
-version = "0.0.9"
+version = "0.0.10"
 description = "Colorized logging with Python."
 readme = "README.md"
 requires-python = ">=3.7"
@@ -28,6 +28,21 @@ classifiers = [
 
 dependencies = [
   "colorama>=0.4.0"
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=6.0",
+  "pytest-cov>=2.0",
+  "pytest-xdist>=2.0"
+]
+dev = [
+  "pytest>=6.0",
+  "pytest-cov>=2.0",
+  "pytest-xdist>=2.0",
+  "black>=22.0",
+  "isort>=5.0",
+  "mypy>=0.900"
 ]
 
 [project.urls]
